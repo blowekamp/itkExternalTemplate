@@ -63,8 +63,8 @@ This software is distributed under the Apache License. Please see
 LICENSE for details.
 
 
-Author
-======
+Authors
+=======
 
-Bradley Lowekamp
-Matt McCormick
+* Bradley Lowekamp
+* Matt McCormick
