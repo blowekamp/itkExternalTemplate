@@ -49,7 +49,7 @@ Editing
 The CMakeLists.txt and itk-modules need to be modified with the name
 of the module, something along the following::
 
-  sed 's/ExternalTemplate/MyModule/g' CMakeLists.txt itk-module.cmake
+  sed 's/ModuleTemplate/MyModule/g' CMakeLists.txt itk-module.cmake
 
 There is the inplace option to sed, but it's not portable, so do this
 change by hand or look up the option in sed.

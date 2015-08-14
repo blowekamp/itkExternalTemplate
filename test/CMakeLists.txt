@@ -1,10 +1,10 @@
 itk_module_test()
 
-set(ExternalTemplateTests
+set(ModuleTemplateTests
   itkEmptyTest.cxx
   )
 
-CreateTestDriver(ExternalTemplate "${ExternalTemplate-Test_LIBRARIES}" "${ExternalTemplateTests}")
+CreateTestDriver(ModuleTemplate "${ModuleTemplate-Test_LIBRARIES}" "${ModuleTemplateTests}")
 
 itk_add_test(NAME itkDeleteMeEmptyTest
-  COMMAND ExternalTemplateTestDriver itkEmptyTest "argument1" "...")
+  COMMAND ModuleTemplateTestDriver itkEmptyTest "argument1" "...")

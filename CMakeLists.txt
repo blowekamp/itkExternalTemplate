@@ -1,7 +1,7 @@
-project(ExternalTemplate)
+project(ModuleTemplate)
 cmake_minimum_required(VERSION 2.8.9)
 
-set(ExternalTemplate_LIBRARIES ExternalTemplate)
+set(ModuleTemplate_LIBRARIES ModuleTemplate)
 
 if(NOT ITK_SOURCE_DIR)
   find_package(ITK REQUIRED)

@@ -1,7 +1,7 @@
-set(ExternalTemplate_SRCS
+set(ModuleTemplate_SRCS
   itkSomeFile.cxx
   )
 
-add_library(ExternalTemplate ${ExternalTemplate_SRCS})
+add_library(ModuleTemplate ${ModuleTemplate_SRCS})
 itk_module_link_dependencies()
-itk_module_target(ExternalTemplate)
+itk_module_target(ModuleTemplate)
