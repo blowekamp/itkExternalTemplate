@@ -30,5 +30,14 @@ int itkLogNormalDistributionImageSourceTest( int argc, char * argv[] )
     return EXIT_FAILURE;
     }
 
+  const unsigned int Dimension = 2;
+  typedef float PixelType;
+  typedef itk::Image< PixelType, Dimension > ImageType;
+
+  typedef itk::LogNormalDistributionImageSource< ImageType > DistributionSourceType;
+  DistributionSourceType::Pointer distributionSource = DistributionSourceType::New();
+
+  std::cout << distributionSource << std::endl;
+
   return EXIT_SUCCESS;
 }
