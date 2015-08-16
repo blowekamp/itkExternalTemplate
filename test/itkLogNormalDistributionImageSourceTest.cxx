@@ -43,6 +43,10 @@ int itkLogNormalDistributionImageSourceTest( int argc, char * argv[] )
   distributionSource->SetSeed( 23334 );
   TEST_SET_GET_VALUE( 23334, distributionSource->GetSeed() );
 
+  ImageType::SizeType size;
+  size.Fill( 128 );
+  distributionSource->SetSize( size );
+
   std::cout << distributionSource << std::endl;
 
   return EXIT_SUCCESS;

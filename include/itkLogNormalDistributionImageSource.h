@@ -18,7 +18,7 @@
 #ifndef itkLogNormalDistributionImageSource_h
 #define itkLogNormalDistributionImageSource_h
 
-#include "itkImageSource.h"
+#include "itkGenerateImageSource.h"
 
 namespace itk
 {
@@ -31,21 +31,21 @@ namespace itk
  *
  */
 template< typename TImage >
-class LogNormalDistributionImageSource: public ImageSource< TImage >
+class LogNormalDistributionImageSource: public GenerateImageSource< TImage >
 {
 public:
   /** Standard class typedefs. */
   typedef TImage ImageType;
 
   typedef LogNormalDistributionImageSource Self;
-  typedef ImageSource< ImageType >         Superclass;
+  typedef GenerateImageSource< ImageType > Superclass;
   typedef SmartPointer< Self >             Pointer;
   typedef SmartPointer< const Self >       ConstPointer;
 
   itkStaticConstMacro( ImageDimension, unsigned int, ImageType::ImageDimension );
 
   /** Run-time type information. */
-  itkTypeMacro( LogNormalDistributionImageSource, ImageSource );
+  itkTypeMacro( LogNormalDistributionImageSource, GenerateImageSource );
 
   /** Standard New macro. */
   itkNewMacro( Self );
