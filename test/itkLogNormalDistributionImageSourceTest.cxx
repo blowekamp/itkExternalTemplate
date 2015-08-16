@@ -44,11 +44,11 @@ int itkLogNormalDistributionImageSourceTest( int argc, char * argv[] )
   distributionSource->SetSeed( 23334 );
   TEST_SET_GET_VALUE( 23334, distributionSource->GetSeed() );
 
-  distributionSource->SetMu( 3.0 );
-  TEST_SET_GET_VALUE( 3.0, distributionSource->GetMu() );
+  distributionSource->SetMean( 3.0 );
+  TEST_SET_GET_VALUE( 3.0, distributionSource->GetMean() );
 
-  distributionSource->SetSigma( 2.0 );
-  TEST_SET_GET_VALUE( 2.0, distributionSource->GetSigma() );
+  distributionSource->SetStandardDeviation( 2.0 );
+  TEST_SET_GET_VALUE( 2.0, distributionSource->GetStandardDeviation() );
 
   ImageType::SizeType size;
   size.Fill( 128 );

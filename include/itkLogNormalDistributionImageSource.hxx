@@ -32,8 +32,8 @@ template< typename TImage >
 LogNormalDistributionImageSource< TImage >
 ::LogNormalDistributionImageSource():
   m_Seed( 1 ),
-  m_Mu( 0.0 ),
-  m_Sigma( 1.0 )
+  m_Mean( 0.0 ),
+  m_StandardDeviation( 1.0 )
 {
 }
 
@@ -46,8 +46,8 @@ LogNormalDistributionImageSource< TImage >
   Superclass::PrintSelf( os, indent );
 
   os << indent << "Seed: " << this->GetSeed() << std::endl;
-  os << indent << "Mu: " << this->GetMu() << std::endl;
-  os << indent << "Sigma: " << this->GetSigma() << std::endl;
+  os << indent << "Mean: " << this->GetMean() << std::endl;
+  os << indent << "StandardDeviation: " << this->GetStandardDeviation() << std::endl;
 }
 
 
@@ -69,7 +69,7 @@ LogNormalDistributionImageSource< TImage >
 
   typedef typename ImageType::PixelType PixelType;
   typedef std::lognormal_distribution< PixelType > LogNormalDistributionType;
-  LogNormalDistributionType logNormalDistribution( this->GetMu(), this->GetSigma() );
+  LogNormalDistributionType logNormalDistribution( this->GetMean(), this->GetStandardDeviation() );
   std::mt19937 generator( generatedSeeds[threadId] );
 
   const SizeValueType size0 = outputRegion.GetSize( 0 );

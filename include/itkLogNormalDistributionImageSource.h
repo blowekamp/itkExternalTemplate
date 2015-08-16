@@ -27,7 +27,18 @@ namespace itk
  *
  * \brief Generate a image of pixels sampled from a log-normal distribution.
  *
- * Real-valued pixels are sampled from a log-normal distribution.
+ * Real-valued pixels are sampled from a log-normal distribution; the
+ * logarithm of these pixels is normally distributed.
+ *
+ * The pixels, \f$x > 0\f$ follow
+ *
+ * \f[
+ *   f(x) = \frac{1}{sx\sqrt{2 \pi}} e^{\left( \frac{-(ln x - m)^2}{2s^2} \right)}
+ * \f]
+ *
+ * weher \f$s\f$ is the StandardDeviation and \f$m\f$ is the Mean of the
+ * underlying normal distribution.
+ *
  *
  */
 template< typename TImage >
@@ -56,12 +67,12 @@ public:
   itkSetMacro(Seed, uint32_t);
 
   /** Mean of the of the underlying normal distribution. */
-  itkGetConstMacro(Mu, PixelType);
-  itkSetMacro(Mu, PixelType);
+  itkGetConstMacro(Mean, PixelType);
+  itkSetMacro(Mean, PixelType);
 
   /** Standard deviation of the of the underlying normal distribution. */
-  itkGetConstMacro(Sigma, PixelType);
-  itkSetMacro(Sigma, PixelType);
+  itkGetConstMacro(StandardDeviation, PixelType);
+  itkSetMacro(StandardDeviation, PixelType);
 
 protected:
   LogNormalDistributionImageSource();
@@ -79,8 +90,8 @@ private:
 
   uint32_t m_Seed;
 
-  PixelType m_Mu;
-  PixelType m_Sigma;
+  PixelType m_Mean;
+  PixelType m_StandardDeviation;
 
 #ifdef ITK_USE_CONCEPT_CHECKING
   itkConceptMacro( FloatingPointPixel, ( itk::Concept::IsFloatingPoint< typename ImageType::PixelType > ) );
