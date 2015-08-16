@@ -20,6 +20,9 @@
 
 #include "itkLogNormalDistributionImageSource.h"
 
+#include "itkImageScanlineIterator.h"
+#include "itkProgressReporter.h"
+
 #include <random>
 
 namespace itk
@@ -49,6 +52,37 @@ LogNormalDistributionImageSource< TImage >
 ::ThreadedGenerateData( const OutputRegionType & outputRegion, ThreadIdType threadId )
 {
   ImageType * output = this->GetOutput();
+
+  int seeds[threadId];
+  for( ii: seeds )
+    {
+    seeds[ii] = this->m_Seed + ii;
+    }
+  std::seed_seq seedSeq(seeds, seeds + threadId);
+  std::vector< uint32_t > generatedSeeds( threadId + 1 );
+  seedSeq.generate(generatedSeeds.begin(), generatedSeeds.end());
+
+  const SizeValueType size0 = outputRegion.GetSize( 0 );
+  if( size0 == 0 )
+    {
+    return;
+    }
+  const SizeValueType numberOfLinesToProcess = outputRegion.GetNumberOfPixels() / size0;
+
+  typedef ImageScanlineIterator< ImageType > IteratorType;
+  IteratorType it( output, outputRegion );
+  ProgressReporter progress( this, threadId, numberOfLinesToProcess );
+
+  while( !it.IsAtEnd() )
+    {
+    while( !it.IsAtEndOfLine() )
+      {
+      //it.Set( todo );
+      ++it;
+      }
+    it.NextLine();
+    progress.CompletedPixel();
+    }
 }
 
 } // end namespace itk

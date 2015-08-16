@@ -30,6 +30,7 @@ int itkLogNormalDistributionImageSourceTest( int argc, char * argv[] )
     std::cerr << std::endl;
     return EXIT_FAILURE;
     }
+  const char * outputImageFileName  = argv[1];
 
   const unsigned int Dimension = 2;
   typedef float PixelType;
@@ -48,6 +49,20 @@ int itkLogNormalDistributionImageSourceTest( int argc, char * argv[] )
   distributionSource->SetSize( size );
 
   std::cout << distributionSource << std::endl;
+
+  typedef itk::ImageFileWriter< ImageType > WriterType;
+  WriterType::Pointer writer = WriterType::New();
+  writer->SetFileName( outputImageFileName );
+  writer->SetInput( distributionSource->GetOutput() );
+  try
+    {
+    writer->Update();
+    }
+  catch( itk::ExceptionObject & error )
+    {
+    std::cerr << "Error: " << error << std::endl;
+    return EXIT_FAILURE;
+    }
 
   return EXIT_SUCCESS;
 }
