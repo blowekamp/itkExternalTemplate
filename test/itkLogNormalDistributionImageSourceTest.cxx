@@ -19,6 +19,7 @@
 #include "itkLogNormalDistributionImageSource.h"
 
 #include "itkImageFileWriter.h"
+#include "itkTestingMacros.h"
 
 int itkLogNormalDistributionImageSourceTest( int argc, char * argv[] )
 {
@@ -36,6 +37,11 @@ int itkLogNormalDistributionImageSourceTest( int argc, char * argv[] )
 
   typedef itk::LogNormalDistributionImageSource< ImageType > DistributionSourceType;
   DistributionSourceType::Pointer distributionSource = DistributionSourceType::New();
+
+  EXERCISE_BASIC_OBJECT_METHODS( distributionSource, LogNormalDistributionImageSource );
+
+  distributionSource->SetSeed( 23334 );
+  TEST_SET_GET_VALUE( 23334, distributionSource->GetSeed() );
 
   std::cout << distributionSource << std::endl;
 

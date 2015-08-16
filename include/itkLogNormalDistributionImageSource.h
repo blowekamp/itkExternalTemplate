@@ -50,15 +50,25 @@ public:
   /** Standard New macro. */
   itkNewMacro( Self );
 
+  /** Seed for random initialization  */
+  itkGetConstMacro(Seed, uint32_t);
+  itkSetMacro(Seed, uint32_t);
+
 protected:
   LogNormalDistributionImageSource();
   virtual ~LogNormalDistributionImageSource() {}
 
   void PrintSelf( std::ostream& os, Indent indent ) const ITK_OVERRIDE;
 
+  typedef typename ImageType::RegionType OutputRegionType;
+
+  virtual void ThreadedGenerateData( const OutputRegionType & outputRegion, ThreadIdType threadId ) ITK_OVERRIDE;
+
 private:
   LogNormalDistributionImageSource( const Self& ); // purposely not implemented
   void operator=( const Self& ); // purposely not implemented
+
+  uint32_t m_Seed;
 };
 }
 

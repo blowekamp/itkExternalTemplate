@@ -20,6 +20,8 @@
 
 #include "itkLogNormalDistributionImageSource.h"
 
+#include <random>
+
 namespace itk
 {
 
@@ -36,6 +38,17 @@ LogNormalDistributionImageSource< TImage >
 ::PrintSelf( std::ostream& os, Indent indent ) const
 {
   Superclass::PrintSelf( os, indent );
+
+  os << indent << "Seed: " << this->m_Seed << std::endl;
+}
+
+
+template< typename TImage >
+void
+LogNormalDistributionImageSource< TImage >
+::ThreadedGenerateData( const OutputRegionType & outputRegion, ThreadIdType threadId )
+{
+  ImageType * output = this->GetOutput();
 }
 
 } // end namespace itk

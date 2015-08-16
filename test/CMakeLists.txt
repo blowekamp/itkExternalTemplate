@@ -11,6 +11,6 @@ itk_add_test(NAME itkDeleteMeEmptyTest
   COMMAND ModuleTemplateTestDriver itkEmptyTest "argument1" "...")
 
 itk_add_test(NAME itkLogNormalDistributionImageSourceTest
-  COMMAND ModuleTemplateTestDriver itkLogNormalDistributionImageSourceTest
+  COMMAND ModuleTemplateTestDriver --without-threads itkLogNormalDistributionImageSourceTest
     ${ITK_TEST_OUTPUT_DIR}/itkLogNormalDistributionImageSourceTestOutput.mha
     )
