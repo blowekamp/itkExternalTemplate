@@ -6,7 +6,8 @@ if(NOT ITK_SOURCE_DIR)
   list(APPEND CMAKE_MODULE_PATH ${ITK_CMAKE_DIR})
 endif()
 
-
+# This are checks specific to the example content in this module and can be
+# removed.
 include(CheckIncludeFileCXX)
 check_include_file_cxx("random" _have_random)
 if(NOT _have_random)
