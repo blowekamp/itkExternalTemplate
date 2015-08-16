@@ -34,9 +34,10 @@ template< typename TImage >
 class LogNormalDistributionImageSource: public GenerateImageSource< TImage >
 {
 public:
-  /** Standard class typedefs. */
-  typedef TImage ImageType;
+  typedef TImage                        ImageType;
+  typedef typename ImageType::PixelType PixelType;
 
+  /** Standard class typedefs. */
   typedef LogNormalDistributionImageSource Self;
   typedef GenerateImageSource< ImageType > Superclass;
   typedef SmartPointer< Self >             Pointer;
@@ -54,6 +55,14 @@ public:
   itkGetConstMacro(Seed, uint32_t);
   itkSetMacro(Seed, uint32_t);
 
+  /** Mean of the of the underlying normal distribution. */
+  itkGetConstMacro(Mu, PixelType);
+  itkSetMacro(Mu, PixelType);
+
+  /** Standard deviation of the of the underlying normal distribution. */
+  itkGetConstMacro(Sigma, PixelType);
+  itkSetMacro(Sigma, PixelType);
+
 protected:
   LogNormalDistributionImageSource();
   virtual ~LogNormalDistributionImageSource() {}
@@ -69,6 +78,13 @@ private:
   void operator=( const Self& ); // purposely not implemented
 
   uint32_t m_Seed;
+
+  PixelType m_Mu;
+  PixelType m_Sigma;
+
+#ifdef ITK_USE_CONCEPT_CHECKING
+  itkConceptMacro( FloatingPointPixel, ( itk::Concept::IsFloatingPoint< typename ImageType::PixelType > ) );
+#endif
 };
 }
 

@@ -30,7 +30,10 @@ namespace itk
 
 template< typename TImage >
 LogNormalDistributionImageSource< TImage >
-::LogNormalDistributionImageSource()
+::LogNormalDistributionImageSource():
+  m_Seed( 1 ),
+  m_Mu( 0.0 ),
+  m_Sigma( 1.0 )
 {
 }
 
@@ -42,7 +45,9 @@ LogNormalDistributionImageSource< TImage >
 {
   Superclass::PrintSelf( os, indent );
 
-  os << indent << "Seed: " << this->m_Seed << std::endl;
+  os << indent << "Seed: " << this->GetSeed() << std::endl;
+  os << indent << "Mu: " << this->GetMu() << std::endl;
+  os << indent << "Sigma: " << this->GetSigma() << std::endl;
 }
 
 
@@ -56,11 +61,16 @@ LogNormalDistributionImageSource< TImage >
   int seeds[threadId];
   for( ii: seeds )
     {
-    seeds[ii] = this->m_Seed + ii;
+    seeds[ii] = this->GetSeed() + ii;
     }
   std::seed_seq seedSeq(seeds, seeds + threadId);
   std::vector< uint32_t > generatedSeeds( threadId + 1 );
   seedSeq.generate(generatedSeeds.begin(), generatedSeeds.end());
+
+  typedef typename ImageType::PixelType PixelType;
+  typedef std::lognormal_distribution< PixelType > LogNormalDistributionType;
+  LogNormalDistributionType logNormalDistribution( this->GetMu(), this->GetSigma() );
+  std::mt19937 generator( generatedSeeds[threadId] );
 
   const SizeValueType size0 = outputRegion.GetSize( 0 );
   if( size0 == 0 )
@@ -77,7 +87,7 @@ LogNormalDistributionImageSource< TImage >
     {
     while( !it.IsAtEndOfLine() )
       {
-      //it.Set( todo );
+      it.Set( logNormalDistribution( generator ) );
       ++it;
       }
     it.NextLine();
