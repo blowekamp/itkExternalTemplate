@@ -1,6 +1,5 @@
 set(ModuleTemplate_SRCS
   itkMinimalStandardRandomVariateGenerator.cxx
-  itkSomeFile.cxx
   )
 
 add_library(ModuleTemplate ${ModuleTemplate_SRCS})

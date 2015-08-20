@@ -1,15 +1,11 @@
 itk_module_test()
 
 set(ModuleTemplateTests
-  itkEmptyTest.cxx
   itkMinimalStandardRandomVariateGeneratorTest.cxx
   itkLogNormalDistributionImageSourceTest.cxx
   )
 
 CreateTestDriver(ModuleTemplate "${ModuleTemplate-Test_LIBRARIES}" "${ModuleTemplateTests}")
-
-itk_add_test(NAME itkDeleteMeEmptyTest
-  COMMAND ModuleTemplateTestDriver itkEmptyTest "argument1" "...")
 
 itk_add_test(NAME itkMinimalStandardRandomVariateGeneratorTest
   COMMAND ModuleTemplateTestDriver itkMinimalStandardRandomVariateGeneratorTest
