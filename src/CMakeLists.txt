@@ -1,4 +1,5 @@
 set(ModuleTemplate_SRCS
+  itkMinimalStandardRandomVariateGenerator.cxx
   itkSomeFile.cxx
   )
 
