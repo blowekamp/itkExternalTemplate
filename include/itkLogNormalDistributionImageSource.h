@@ -36,9 +36,10 @@ namespace itk
  *   f(x) = \frac{1}{sx\sqrt{2 \pi}} e^{\left( \frac{-(ln x - m)^2}{2s^2} \right)}
  * \f]
  *
- * weher \f$s\f$ is the StandardDeviation and \f$m\f$ is the Mean of the
+ * where \f$s\f$ is the StandardDeviation and \f$m\f$ is the Mean of the
  * underlying normal distribution.
  *
+ * \ingroup ModuleTemplate
  *
  */
 template< typename TImage >
