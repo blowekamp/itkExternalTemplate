@@ -12,8 +12,9 @@ file(READ "${MY_CURRENT_DIR}/README.rst" DOCUMENTATION)
 
 # define the dependencies of the include module and the tests
 itk_module(ModuleTemplate
-  COMPILE_DEPENDS
+  DEPENDS
     ITKCommon
+  COMPILE_DEPENDS
     ITKImageSources
   TEST_DEPENDS
     ITKTestKernel
