@@ -1,13 +1,21 @@
 itk_module_test()
 
-#${itk-module} will be the name of this module and will not need to be
-#changed when this module is renamed.
+set(ModuleTemplateTests
+  itkMinimalStandardRandomVariateGeneratorTest.cxx
+  itkLogNormalDistributionImageSourceTest.cxx
+  )
 
-set(${itk-module}Tests
-  itkEmptyTest.cxx
-)
+CreateTestDriver(ModuleTemplate "${ModuleTemplate-Test_LIBRARIES}" "${ModuleTemplateTests}")
 
-CreateTestDriver(${itk-module}  "${${itk-module}-Test_LIBRARIES}" "${${itk-module}Tests}")
+itk_add_test(NAME itkMinimalStandardRandomVariateGeneratorTest
+  COMMAND ModuleTemplateTestDriver itkMinimalStandardRandomVariateGeneratorTest
+  )
 
-itk_add_test(NAME itkDeleteMeEmptyTest
-  COMMAND ${itk-module}TestDriver itkEmptyTest "argument1" "..." )
+itk_add_test(NAME itkLogNormalDistributionImageSourceTest
+  COMMAND ModuleTemplateTestDriver --without-threads
+  --compare
+    ${ITK_TEST_OUTPUT_DIR}/itkLogNormalDistributionImageSourceTestOutput.mha
+    DATA{Baseline/itkLogNormalDistributionImageSourceTestOutput.mha}
+  itkLogNormalDistributionImageSourceTest
+    ${ITK_TEST_OUTPUT_DIR}/itkLogNormalDistributionImageSourceTestOutput.mha
+  )
