@@ -5,8 +5,6 @@ env:
   global:
   - ExternalData_OBJECT_STORES="${HOME}/.ExternalData"
   - PROJ_SRC="${TRAVIS_BUILD_DIR}"
-  - ITK_REPOSITORY_REMOTE="https://ITK.org/ITK.git"
-  - ITK_REPOSITORY="${ExternalData_OBJECT_STORES}/ITK.git"
   - ITK_MODULE_NAME=ExternalTemplate
   - ITK_TAG=master
   - ITK_SRC="${HOME}/ITK"
@@ -31,9 +29,7 @@ before_install:
 before_script:
    - cmake --version
    - env
-   - ( cd ${ExternalData_OBJECT_STORES} && if [[ ! -e ${ITK_REPOSITORY} ]]; then git clone --bare ${ITK_REPOSITORY_REMOTE}; fi && cd ${ITK_REPOSITORY} && git fetch origin )
-   - git clone --single-branch ${ITK_REPOSITORY} -b "${ITK_TAG}" "${ITK_SRC}" && ( cd ${ITK_SRC}/Modules/Remote && ln -s ${PROJ_SRC} ${ITK_MODULE_NAME} )
-   - ( cd ${PROJ_SRC}/test && git clone --single-branch ${ITK_REPOSITORY} -b dashboard dashboard)
+   - bash -x ${PROJ_SRC}/test/ci/CacheAndUpdateITK.sh
 
 script:
-   - ctest -V -S ${PROJ_SRC}/test/ci/dashboard.cmake
+   - ctest -V -S ${PROJ_SRC}/test/ci/travis_dashboard.cmake
