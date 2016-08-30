@@ -8,8 +8,15 @@
 #  ITK_TAG - name of ITK tag or branch
 set(itk_module "$ENV{ITK_MODULE_NAME}")
 
-set(CTEST_SITE "$ENV{HOSTNAME}.ci")
-set(CTEST_BUILD_NAME "$ENV{HOSTNAME}-$ENV{ITK_MODULE_NAME}")
+set(CTEST_BUILD_NAME "${itk_module}")
+if("$ENV{TRAVIS}" STREQUAL "true" )
+  set(CTEST_SITE "travisci-$ENV{TRAVIS_BUILD_ID}")
+  string(SUBSTRING "$ENV{TRAVIS_COMMIT}" 0 6 short_sha1)
+  set(git_moniker "-")
+  set(CTEST_BUILD_NAME "${CTEST_BUILD_NAME}-$ENV{TRAVIS_OS_NAME}-$ENV{TRAVIS_JOB_NUMBER}-${short_sha1}")
+endif()
+
+
 set(CTEST_BUILD_CONFIGURATION "Debug")
 set(CTEST_CMAKE_GENERATOR "Unix Makefiles")
 
