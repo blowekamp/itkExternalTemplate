@@ -8,11 +8,6 @@
 #  ITK_TAG - name of ITK tag or branch
 set(itk_module "$ENV{ITK_MODULE_NAME}")
 
-set(CTEST_SITE "$ENV{HOSTNAME}.ci")
-set(CTEST_BUILD_NAME "$ENV{HOSTNAME}-$ENV{ITK_MODULE_NAME}")
-set(CTEST_BUILD_CONFIGURATION "Debug")
-set(CTEST_CMAKE_GENERATOR "Unix Makefiles")
-
 set(dashboard_no_update 0)
 if(DEFINED ENV{ITK_SRC})
   set(CTEST_SOURCE_DIRECTORY "$ENV{ITK_SRC}")
@@ -32,7 +27,9 @@ set(dashboard_track "Remote")
 include( ProcessorCount )
 ProcessorCount( PROCESSOR_COUNT )
 if(PROCESSOR_COUNT)
-  set( CTEST_BUILD_FLAGS -j${PROCESSOR_COUNT})
+  if (CTEST_CMAKE_GENERATOR STREQUAL "Unix Makefiles")
+    set( CTEST_BUILD_FLAGS -j${PROCESSOR_COUNT})
+  endif()
   set( CTEST_TEST_ARGS ${CTEST_TEST_ARGS} PARALLEL_LEVEL ${PROCESSOR_COUNT} )
 endif()
 
@@ -49,6 +46,10 @@ SET (dashboard_cache "
     ITK_BUILD_DEFAULT_MODULES:BOOL=OFF
     Module_${itk_module}:BOOL=ON
 " )
+
+list(APPEND CTEST_NOTES_FILES
+  "${CMAKE_CURRENT_LIST_FILE}"
+  )
 
 include(${CTEST_SCRIPT_DIRECTORY}/../dashboard/itk_common.cmake)
 
