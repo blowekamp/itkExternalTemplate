@@ -63,18 +63,6 @@ public:
   /** Standard New macro. */
   itkNewMacro( Self );
 
-  /** Seed for random initialization  */
-  itkGetConstMacro(Seed, uint32_t);
-  itkSetMacro(Seed, uint32_t);
-
-  /** Mean of the of the underlying normal distribution. */
-  itkGetConstMacro(Mean, PixelType);
-  itkSetMacro(Mean, PixelType);
-
-  /** Standard deviation of the of the underlying normal distribution. */
-  itkGetConstMacro(StandardDeviation, PixelType);
-  itkSetMacro(StandardDeviation, PixelType);
-
 protected:
   LogNormalDistributionImageSource();
   virtual ~LogNormalDistributionImageSource() {}
@@ -88,11 +76,6 @@ protected:
 private:
   LogNormalDistributionImageSource( const Self& ); // purposely not implemented
   void operator=( const Self& ); // purposely not implemented
-
-  uint32_t m_Seed;
-
-  PixelType m_Mean;
-  PixelType m_StandardDeviation;
 
 #ifdef ITK_USE_CONCEPT_CHECKING
   itkConceptMacro( FloatingPointPixel, ( itk::Concept::IsFloatingPoint< typename ImageType::PixelType > ) );

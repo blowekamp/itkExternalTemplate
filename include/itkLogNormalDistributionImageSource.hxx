@@ -19,21 +19,17 @@
 #define itkLogNormalDistributionImageSource_hxx
 
 #include "itkLogNormalDistributionImageSource.h"
+#include "itkNormalVariateGenerator.h"
 
 #include "itkImageScanlineIterator.h"
 #include "itkProgressReporter.h"
-
-#include <random>
 
 namespace itk
 {
 
 template< typename TImage >
 LogNormalDistributionImageSource< TImage >
-::LogNormalDistributionImageSource():
-  m_Seed( 1 ),
-  m_Mean( 0.0 ),
-  m_StandardDeviation( 1.0 )
+::LogNormalDistributionImageSource()
 {
 }
 
@@ -44,10 +40,6 @@ LogNormalDistributionImageSource< TImage >
 ::PrintSelf( std::ostream& os, Indent indent ) const
 {
   Superclass::PrintSelf( os, indent );
-
-  os << indent << "Seed: " << this->GetSeed() << std::endl;
-  os << indent << "Mean: " << this->GetMean() << std::endl;
-  os << indent << "StandardDeviation: " << this->GetStandardDeviation() << std::endl;
 }
 
 
@@ -58,19 +50,9 @@ LogNormalDistributionImageSource< TImage >
 {
   ImageType * output = this->GetOutput();
 
-  int seeds[threadId];
-  for( ii: seeds )
-    {
-    seeds[ii] = this->GetSeed() + ii;
-    }
-  std::seed_seq seedSeq(seeds, seeds + threadId);
-  std::vector< uint32_t > generatedSeeds( threadId + 1 );
-  seedSeq.generate(generatedSeeds.begin(), generatedSeeds.end());
-
-  typedef typename ImageType::PixelType PixelType;
-  typedef std::lognormal_distribution< PixelType > LogNormalDistributionType;
-  LogNormalDistributionType logNormalDistribution( this->GetMean(), this->GetStandardDeviation() );
-  std::mt19937 generator( generatedSeeds[threadId] );
+  typedef itk::Statistics::NormalVariateGenerator NormalGeneratorType;
+  NormalGeneratorType::Pointer normalGenerator = NormalGeneratorType::New();
+  normalGenerator->Initialize( 101 );
 
   const SizeValueType size0 = outputRegion.GetSize( 0 );
   if( size0 == 0 )
@@ -87,7 +69,7 @@ LogNormalDistributionImageSource< TImage >
     {
     while( !it.IsAtEndOfLine() )
       {
-      it.Set( logNormalDistribution( generator ) );
+      it.Set( normalGenerator->GetVariate() );
       ++it;
       }
     it.NextLine();

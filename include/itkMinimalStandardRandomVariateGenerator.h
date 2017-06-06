@@ -22,8 +22,7 @@
 #include "itkObjectFactory.h"
 #include "itkRandomVariateGeneratorBase.h"
 #include "ModuleTemplateExport.h"
-
-#include <random>
+#include "itkNormalVariateGenerator.h"
 
 namespace itk
 {
@@ -56,36 +55,35 @@ class ModuleTemplate_EXPORT MinimalStandardRandomVariateGenerator:
 {
 public:
   /** Standard class typedefs. */
-  typedef MinimalStandardRandomVariateGenerator Self;
+  typedef MinimalStandardRandomVariateGenerator    Self;
   typedef RandomVariateGeneratorBase               Superclass;
   typedef SmartPointer< Self >                     Pointer;
   typedef SmartPointer< const Self >               ConstPointer;
 
   typedef uint32_t IntegerType;
 
+  typedef itk::Statistics::NormalVariateGenerator NormalGeneratorType;
+
   /** Run-time type information (and related methods). */
-  itkTypeMacro( MinimalStandardRandomVariateGenerator, RandomVariateGeneratorBase );
+  itkTypeMacro( MinimalStandardRandomVariateGenerator, RandomVariateGeneratorBase);
 
   /** Method for creation through the object factory.  */
-  itkNewMacro( MinimalStandardRandomVariateGenerator );
+  itkNewMacro( Self );
 
   /** initialize with a simple IntegerType */
-  void Initialize(IntegerType oneSeed);
-
-  /** Get an integer variate in [0, 2^64-1] */
-  IntegerType GetIntegerVariate();
+  void Initialize(int randomSeed);
 
   /** Get a variate in the range [0, 1] */
   virtual double GetVariate() ITK_OVERRIDE;
 
 protected:
   MinimalStandardRandomVariateGenerator();
-  virtual ~MinimalStandardRandomVariateGenerator();
+  virtual ~MinimalStandardRandomVariateGenerator() {}
 
   virtual void PrintSelf(std::ostream & os, Indent indent) const ITK_OVERRIDE;
 
 private:
-  std::minstd_rand m_Generator;
+  NormalGeneratorType::Pointer m_NormalGenerator;
 };
 
 } // end of namespace Statistics

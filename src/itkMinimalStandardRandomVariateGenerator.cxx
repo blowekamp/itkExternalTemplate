@@ -25,29 +25,15 @@ namespace Statistics
 MinimalStandardRandomVariateGenerator
 ::MinimalStandardRandomVariateGenerator()
 {
+  this->m_NormalGenerator = NormalGeneratorType::New();
   this->Initialize( 1 );
 }
 
-
-MinimalStandardRandomVariateGenerator
-::~MinimalStandardRandomVariateGenerator()
-{
-}
-
-
 void
 MinimalStandardRandomVariateGenerator
-::Initialize(IntegerType randomSeed)
+::Initialize(int randomSeed)
 {
-  this->m_Generator.seed( randomSeed );
-}
-
-
-MinimalStandardRandomVariateGenerator::IntegerType
-MinimalStandardRandomVariateGenerator
-::GetIntegerVariate()
-{
-  return this->m_Generator();
+  this->m_NormalGenerator->Initialize( randomSeed );
 }
 
 
@@ -55,7 +41,7 @@ double
 MinimalStandardRandomVariateGenerator
 ::GetVariate()
 {
-  return this->m_Generator() / static_cast< double >( this->m_Generator.max() );
+  return this->m_NormalGenerator->GetVariate();
 }
 
 
