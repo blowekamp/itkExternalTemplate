@@ -11,8 +11,8 @@ except ImportError:
     sys.exit(1)
 
 setup(
-    name='itk-moduletemplates',
-    version='0.0.0',
+    name='itk-moduletemplate',
+    version='0.1.0',
     author='Insight Software Consortium',
     author_email='community@itk.org',
     packages=['itk'],
