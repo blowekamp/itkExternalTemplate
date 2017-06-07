@@ -15,10 +15,10 @@
  *  limitations under the License.
  *
  *=========================================================================*/
-#ifndef itkLogNormalDistributionImageSource_hxx
-#define itkLogNormalDistributionImageSource_hxx
+#ifndef itkNormalDistributionImageSource_hxx
+#define itkNormalDistributionImageSource_hxx
 
-#include "itkLogNormalDistributionImageSource.h"
+#include "itkNormalDistributionImageSource.h"
 #include "itkNormalVariateGenerator.h"
 
 #include "itkImageScanlineIterator.h"
@@ -28,15 +28,15 @@ namespace itk
 {
 
 template< typename TImage >
-LogNormalDistributionImageSource< TImage >
-::LogNormalDistributionImageSource()
+NormalDistributionImageSource< TImage >
+::NormalDistributionImageSource()
 {
 }
 
 
 template< typename TImage >
 void
-LogNormalDistributionImageSource< TImage >
+NormalDistributionImageSource< TImage >
 ::PrintSelf( std::ostream& os, Indent indent ) const
 {
   Superclass::PrintSelf( os, indent );
@@ -45,7 +45,7 @@ LogNormalDistributionImageSource< TImage >
 
 template< typename TImage >
 void
-LogNormalDistributionImageSource< TImage >
+NormalDistributionImageSource< TImage >
 ::ThreadedGenerateData( const OutputRegionType & outputRegion, ThreadIdType threadId )
 {
   ImageType * output = this->GetOutput();
@@ -79,4 +79,4 @@ LogNormalDistributionImageSource< TImage >
 
 } // end namespace itk
 
-#endif // itkLogNormalDistributionImageSource_hxx
+#endif // itkNormalDistributionImageSource_hxx

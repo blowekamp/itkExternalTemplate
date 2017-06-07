@@ -16,12 +16,12 @@
  *
  *=========================================================================*/
 
-#include "itkLogNormalDistributionImageSource.h"
+#include "itkNormalDistributionImageSource.h"
 
 #include "itkImageFileWriter.h"
 #include "itkTestingMacros.h"
 
-int itkLogNormalDistributionImageSourceTest( int argc, char * argv[] )
+int itkNormalDistributionImageSourceTest( int argc, char * argv[] )
 {
   if( argc < 2 )
     {
@@ -36,10 +36,10 @@ int itkLogNormalDistributionImageSourceTest( int argc, char * argv[] )
   typedef float                              PixelType;
   typedef itk::Image< PixelType, Dimension > ImageType;
 
-  typedef itk::LogNormalDistributionImageSource< ImageType > DistributionSourceType;
+  typedef itk::NormalDistributionImageSource< ImageType > DistributionSourceType;
   DistributionSourceType::Pointer distributionSource = DistributionSourceType::New();
 
-  EXERCISE_BASIC_OBJECT_METHODS( distributionSource, LogNormalDistributionImageSource , GenerateImageSource );
+  EXERCISE_BASIC_OBJECT_METHODS( distributionSource, NormalDistributionImageSource , GenerateImageSource );
 
 
   ImageType::SizeType size;
