@@ -21,18 +21,16 @@
 #include "itkTestingMacros.h"
 #include "itkMath.h"
 
-#include <iomanip>
-
 int itkMinimalStandardRandomVariateGeneratorTest( int, char * [] )
 {
   typedef itk::Statistics::MinimalStandardRandomVariateGenerator GeneratorType;
   GeneratorType::Pointer generator = GeneratorType::New();
   
-  EXERCISE_BASIC_OBJECT_METHODS( generator, MinimalStandardRandomVariateGenerator );
+  EXERCISE_BASIC_OBJECT_METHODS( generator, MinimalStandardRandomVariateGenerator, RandomVariateGeneratorBase );
 
   generator->Initialize( 324 );
-  TEST_EXPECT_EQUAL( 15639804, generator->GetIntegerVariate() );
-  TEST_EXPECT_TRUE( itk::Math::FloatAlmostEqual( generator->GetVariate(), 0.55051352274651965679 ));
+
+  TEST_EXPECT_TRUE( itk::Math::FloatAlmostEqual( generator->GetVariate(), 1.35581 , 4 , 0.0001));
 
   return EXIT_SUCCESS;
 }

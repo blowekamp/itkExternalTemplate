@@ -14,6 +14,7 @@ file(READ "${MY_CURRENT_DIR}/README.rst" DOCUMENTATION)
 itk_module(ModuleTemplate
   DEPENDS
     ITKCommon
+    ITKStatistics
   COMPILE_DEPENDS
     ITKImageSources
   TEST_DEPENDS
