@@ -1,5 +1,5 @@
 from __future__ import print_function
-from os import sys, path
+from os import sys
 
 try:
     from skbuild import setup
