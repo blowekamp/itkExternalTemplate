@@ -1,41 +1,56 @@
-General
-=======
+ITKModuleTemplate
+=================
 
-This is a module for `ITK <http://itk.org>`_: The Insight Toolkit for
-Segmentation and Registration. It is designed to work with the ITKv4 modular
-system and to be placed in ITK/Modules/External or used as a Remote module.
 
-This module is empty. It is a template that is a starting point for a module
-with actual content.
+.. image:: https://circleci.com/gh/InsightSoftwareConsortium/ITKModuleTemplate.svg?style=shield
+    :target: https://circleci.com/gh/InsightSoftwareConsortium/ITKModuleTemplate
+
+.. image:: https://travis-ci.org/InsightSoftwareConsortium/ITKModuleTemplate.svg?branch=master
+    :target: https://travis-ci.org/InsightSoftwareConsortium/ITKModuleTemplate
+
+.. image:: https://img.shields.io/appveyor/ci/thewtex/itkmoduletemplate.svg
+    :target: https://ci.appveyor.com/project/thewtex/itkmoduletemplate
+
+This is a module for the `Insight Toolkit (ITK) <http://itk.org>`_ for
+segmentation and registration. It is designed to work with the ITKv4 modular
+system.
+
+This module is a template to be used as a starting point for a new ITK module.
+
 
 Getting Started
-===============
-
-The official ITKv4 Wiki documentation on adding an external module is here:
-
-*  http://www.itk.org/Wiki/ITK_Release_4/Modularization/Add_an_external_module_(external_module)
-*  http://www.itk.org/Wiki/ITK/Policy_and_Procedures_for_Adding_Remote_Modules
-
-
-External Module
 ---------------
 
 The following is a brief list of instructions to get a external module
-started in a repository::
+started in a new repository::
 
   mkdir ITK/Modules/External/ITKMyModule
   cd ITK/Modules/External/ITKMyModule
   git init
-  git fetch git@github.com:InsightSoftwareConsortium/ITKModuleTemplate.git
+  git fetch https://github.com/InsightSoftwareConsortium/ITKModuleTemplate.git
   git merge FETCH_HEAD
+
+Create a new repository account via GitHub's web interface. The module should
+follow the naming convention, *ITK<MyModuleName>*.
+
+Search and replace *ModuleTemplate* with *MyModuleName* in ``CMakeLists.txt``
+and ``itk-module.cmake``.
+
+Documentation on `how to populate the module
+<https://itk.org/ITKSoftwareGuide/html/Book1/ITKSoftwareGuide-Book1ch9.html#x50-1430009>`_
+can be found in the `ITK Software Guide
+<https://itk.org/ITKSoftwareGuide/html/>`_.
+
 
 Remote Module
 -------------
 
-After a module has been created as a git repository it can be included
-as a remote module, which enables automatic fetching. Add a file in
-"ITK/Modules/Remote" called "YourModule.remote.cmake", for this module
-it would be "ExternalExample.remote.cmake" with the followlowing contents::
+After an `Insight Journal <http://www.insight-journal.org/>`_ article has been
+submitted, the module can be included in ITK as a `remote module
+<http://www.itk.org/Wiki/ITK/Policy_and_Procedures_for_Adding_Remote_Modules>`_.
+Add a file in "ITK/Modules/Remote" called "YourModule.remote.cmake", for this
+module it would be "ExternalExample.remote.cmake" with the followlowing
+contents::
 
   itk_fetch_module(MyModule
     "A description of the a module."
@@ -43,28 +58,43 @@ it would be "ExternalExample.remote.cmake" with the followlowing contents::
     GIT_TAG abcdef012345
     )
 
-Editing
--------
 
-The CMakeLists.txt and itk-modules need to be modified with the name
-of the module, something along the following::
+Python Packages
+---------------
 
-  sed 's/ModuleTemplate/MyModule/g' CMakeLists.txt itk-module.cmake
+After enabling builds for the GitHub repository with a `CircleCI
+<https://circleci.com/>`_, `TravisCI <https://travis-ci.org/>`_,
+and `AppVeyor <https://www.appveyor.com/>`_ account, Python wheel
+packages will be available with the continuous integration builds.
 
-There is the inplace option to sed, but it's not portable, so do this
-change by hand or look up the option in sed.
+.. figure:: https://i.imgur.com/OEujGsl.png
+  :alt: CircleCI Python wheels
 
-Then hack away at you code in `include`, `src`, and `test`.
+  Linux Python package wheel links can be found in the CircleCI *Artifacts*
+  tab after expanding the available folders.
+
+.. figure:: https://i.imgur.com/Yw3ziU7.png
+  :alt: TravisCI Python wheels
+
+  macOS Python package wheels can be downloaded by going to the `transfer.sh`
+  link found in the build output.
+
+.. figure:: http://imgur.com/Cj5vs3S.png
+  :alt: AppVeyor Python wheels
+
+  Windows Python package wheel links can be found in the AppVeyor *Artifacts* tab.
+
 
 License
-=======
+-------
 
 This software is distributed under the Apache License. Please see
 LICENSE for details.
 
 
 Authors
-=======
+-------
 
 * Bradley Lowekamp
 * Matt McCormick
+* Jean-Baptiste VIMORT
