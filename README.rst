@@ -92,8 +92,8 @@ packages will be available with the continuous integration builds.
 License
 -------
 
-This software is distributed under the Apache License. Please see
-LICENSE for details.
+This software is distributed under the Apache 2.0 license. Please see
+the *LICENSE* file for details.
 
 
 Authors
