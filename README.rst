@@ -29,6 +29,10 @@ started in a new repository::
   git init
   git fetch https://github.com/InsightSoftwareConsortium/ITKModuleTemplate.git
   git merge FETCH_HEAD
+  rm -rf .git
+  git init
+  git add . .*
+  git commit -m "ENH: Initial ITKModuleTemplate import"
 
 Create a new repository account via GitHub's web interface. The module should
 follow the naming convention, *ITK<MyModuleName>*.
