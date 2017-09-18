@@ -1,18 +1,12 @@
 version: 2
 jobs:
   build-and-test:
-    working_directory: ~/ITKModuleTemplate-build
+    working_directory: ~/{{ cookiecutter.project_name }}-build
     docker:
       - image: insighttoolkit/module-ci:latest
     steps:
       - checkout:
-          path: ~/ITKModuleTemplateCookieCutter
-      - run:
-          name: Evaluate template
-          command: |
-            python -m pip install cookiecutter
-            cd ~/
-            python -m cookiecutter --no-input ~/ITKModuleTemplateCookieCutter
+          path: ~/{{ cookiecutter.project_name }}
       - run:
           name: Configure
           command: |
@@ -20,36 +14,27 @@ jobs:
               -G Ninja \
               -DITK_DIR:PATH=/ITK-build \
               -DBUILD_TESTING:BOOL=ON \
-              -DBUILDNAME:STRING=External-ITKModuleTemplate-${CIRCLE_BRANCH}-${CIRCLE_BUILD_NUM} \
-                ~/ITKModuleTemplate
+              -DBUILDNAME:STRING=External-{{ cookiecutter.project_name }}-${CIRCLE_BRANCH}-${CIRCLE_BUILD_NUM} \
+                ~/{{ cookiecutter.project_name }}
       - run:
           name: Build and Test
           no_output_timeout: 1.0h
           command: |
             ctest -j 2 -VV -D Experimental
   package:
-    working_directory: ~/
+    working_directory: ~/{{ cookiecutter.project_name }}
     machine: true
     steps:
-      - checkout:
-          path: ~/ITKModuleTemplateCookieCutter
-      - run:
-          name: Evaluate template
-          command: |
-            python -m pip install cookiecutter
-            cd ~/
-            python -m cookiecutter --no-input ~/ITKModuleTemplateCookieCutter
+      - checkout
       - run:
           name: Fetch build script
           command: |
-            cd ~/ITKModuleTemplate
             curl -L https://rawgit.com/InsightSoftwareConsortium/ITKPythonPackage/master/scripts/dockcross-manylinux-download-cache-and-build-module-wheels.sh -O
             chmod u+x dockcross-manylinux-download-cache-and-build-module-wheels.sh
       - run:
           name: Build Python packages
           no_output_timeout: 1.0h
           command: |
-            cd ~/ITKModuleTemplate
             ./dockcross-manylinux-download-cache-and-build-module-wheels.sh
       - store_artifacts:
           path: dist

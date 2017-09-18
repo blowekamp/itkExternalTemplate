@@ -21,7 +21,7 @@
 #include "itkIntTypes.h"
 #include "itkObjectFactory.h"
 #include "itkRandomVariateGeneratorBase.h"
-#include "ModuleTemplateExport.h"
+#include "{{ cookiecutter.module_name}}Export.h"
 #include "itkNormalVariateGenerator.h"
 
 namespace itk
@@ -48,9 +48,9 @@ namespace Statistics
  * 2147483647\f$, the Minimial Standard configuration recommended by Park,
  * Miller and Stockmeyer in 1993.
  *
- * \ingroup ModuleTemplate
+ * \ingroup {{ cookiecutter.module_name }}
  */
-class ModuleTemplate_EXPORT MinimalStandardRandomVariateGenerator:
+class {{ cookiecutter.module_name }}_EXPORT MinimalStandardRandomVariateGenerator:
   public RandomVariateGeneratorBase
 {
 public:

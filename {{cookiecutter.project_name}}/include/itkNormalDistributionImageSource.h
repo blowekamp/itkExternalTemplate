@@ -27,7 +27,7 @@ namespace itk
  *
  * \brief Generate a image of pixels sampled from a normal distribution.
  *
- * Real-valued pixels are sampled from a normal distribution; 
+ * Real-valued pixels are sampled from a normal distribution.
  *
  * The pixels, \f$x > 0\f$ follow
  *
@@ -38,7 +38,7 @@ namespace itk
  * where \f$s\f$ is the StandardDeviation and \f$m\f$ is the Mean of the
  * underlying normal distribution.
  *
- * \ingroup ModuleTemplate
+ * \ingroup {{ cookiecutter.module_name }}
  *
  */
 template< typename TImage >

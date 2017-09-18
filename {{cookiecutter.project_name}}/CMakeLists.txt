@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.12)
-project(ModuleTemplate)
+project({{ cookiecutter.module_name }})
 
-set(ModuleTemplate_LIBRARIES ModuleTemplate)
+set({{ cookiecutter.module_name }}_LIBRARIES {{ cookiecutter.module_name }})
 
 if(NOT ITK_SOURCE_DIR)
   find_package(ITK REQUIRED)

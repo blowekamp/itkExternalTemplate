@@ -11,20 +11,15 @@ except ImportError:
     sys.exit(1)
 
 setup(
-    name='itk-moduletemplate',
+    name='{{ cookiecutter.python_package_name }}',
     version='0.1.0',
-    author='Insight Software Consortium',
-    author_email='community@itk.org',
+    author='{{ cookiecutter.full_name }}',
+    author_email='{{ cookiecutter.email }}',
     packages=['itk'],
     package_dir={'itk': 'itk'},
-    download_url=r'https://github.com/InsightSoftwareConsortium/ITKModuleTemplate',
-    description=r'This module is empty. It is a template that is a starting point for a module with actual content.',
-    long_description='ITK is an open-source, cross-platform library that '
-                     'provides developers with an extensive suite of software '
-                     'tools for image analysis. Developed through extreme '
-                     'programming methodologies, ITK employs leading-edge '
-                     'algorithms for registering and segmenting '
-                     'multidimensional scientific images.',
+    download_url=r'{{ cookiecutter.download_url }}',
+    description=r'{{ cookiecutter.project_short_description }}',
+    long_description='{{ cookiecutter.project_long_description }}',
     classifiers=[
         "License :: OSI Approved :: Apache Software License",
         "Programming Language :: Python",
