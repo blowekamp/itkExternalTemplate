@@ -1,0 +1,11 @@
+{
+  "full_name": "Insight Software Consortium",
+  "email": "community@itk.org",
+  "github_username": "itkrobot",
+  "project_name": "ITKModuleTemplate",
+  "module_name": "{{ cookiecutter.project_name[3:] }}",
+  "python_package_name": "itk-{{ cookiecutter.project_name[3:].lower() }}",
+  "download_url": "https://github.com/InsightSoftwareConsortium/ITKModuleTemplate",
+  "project_short_description": "This module is empty. It is a template that is a starting point for a module with actual content.",
+  "project_long_description": "ITK is an open-source, cross-platform library that provides developers with an extensive suite of software tools for image analysis. Developed through extreme programming methodologies, ITK employs leading-edge algorithms for registering and segmenting multidimensional scientific images."
+}
