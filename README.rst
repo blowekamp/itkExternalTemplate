@@ -21,11 +21,10 @@ This module is a template to be used as a starting point for a new ITK module.
 Getting Started
 ---------------
 
-The following is a brief list of instructions to get a external module
-started in a new repository::
+The following will get an external module started in a new repository::
 
   python -m pip install cookiecutter
-  cookiecutter gh:InsightSoftwareConsortium/ITKModuleTemplate
+  python -m cookiecutter gh:InsightSoftwareConsortium/ITKModuleTemplate
   # Fill in the information requested at the prompts
 
 Documentation on `how to populate the module
