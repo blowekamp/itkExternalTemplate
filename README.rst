@@ -33,6 +33,7 @@ can be found in the `ITK Software Guide
 <https://itk.org/ITKSoftwareGuide/html/>`_.
 
 
+
 Remote Module
 -------------
 
@@ -53,27 +54,11 @@ contents::
 Python Packages
 ---------------
 
-After enabling builds for the GitHub repository with a `CircleCI
-<https://circleci.com/>`_, `TravisCI <https://travis-ci.org/>`_,
-and `AppVeyor <https://www.appveyor.com/>`_ account, Python wheel
-packages will be available with the continuous integration builds.
-
-.. figure:: https://i.imgur.com/OEujGsl.png
-  :alt: CircleCI Python wheels
-
-  Linux Python package wheel links can be found in the CircleCI *Artifacts*
-  tab after expanding the available folders.
-
-.. figure:: https://i.imgur.com/Yw3ziU7.png
-  :alt: TravisCI Python wheels
-
-  macOS Python package wheels can be downloaded by going to the `transfer.sh`
-  link found in the build output.
-
-.. figure:: http://imgur.com/Cj5vs3S.png
-  :alt: AppVeyor Python wheels
-
-  Windows Python package wheel links can be found in the AppVeyor *Artifacts* tab.
+Continuous integration service configurations are included to build Python
+packages for Linux, macOS, and Windows. These packages can be `downloaded
+<https://itkpythonpackage.readthedocs.io/en/latest/Build_ITK_Module_Python_packages.html#github-automated-ci-package-builds>`_
+and `uploaded to the Python Package Index (PyPI)
+<https://itkpythonpackage.readthedocs.io/en/latest/Build_ITK_Module_Python_packages.html#upload-the-packages-to-pypi>`_.
 
 
 License
