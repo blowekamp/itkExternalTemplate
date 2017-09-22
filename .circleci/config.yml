@@ -17,7 +17,6 @@ jobs:
           name: Configure
           command: |
             cmake \
-              -G Ninja \
               -DITK_DIR:PATH=/ITK-build \
               -DBUILD_TESTING:BOOL=ON \
               -DBUILDNAME:STRING=External-ITKModuleTemplate-${CIRCLE_BRANCH}-${CIRCLE_BUILD_NUM} \
