@@ -6,7 +6,7 @@ compiler:
 - gcc
 cache:
   directories:
-  - "$HOME/deps"
+    - "$HOME/Library/Caches/Homebrew"
 script:
 - python -m pip install cookiecutter
 - cookiecutter --no-input .
