@@ -5,7 +5,7 @@ set({{ cookiecutter.module_name }}Tests
   itkNormalDistributionImageSourceTest.cxx
   )
 
-CreateTestDriver({{ cookiecutter.module_name }} "${{ '{' }}{{ cookiecutter.module_name -}}_LIBRARIES}" "${{ '{' }}{{ cookiecutter.module_name }}Tests}")
+CreateTestDriver({{ cookiecutter.module_name }} "${{ '{' }}{{ cookiecutter.module_name -}}-Test_LIBRARIES}" "${{ '{' }}{{ cookiecutter.module_name }}Tests}")
 
 itk_add_test(NAME itkMinimalStandardRandomVariateGeneratorTest
   COMMAND {{ cookiecutter.module_name }}TestDriver itkMinimalStandardRandomVariateGeneratorTest
