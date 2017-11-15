@@ -73,8 +73,7 @@ protected:
   virtual void ThreadedGenerateData( const OutputRegionType & outputRegion, ThreadIdType threadId ) ITK_OVERRIDE;
 
 private:
-  NormalDistributionImageSource( const Self& ); // purposely not implemented
-  void operator=( const Self& ); // purposely not implemented
+  ITK_DISALLOW_COPY_AND_ASSIGN(NormalDistributionImageSource);
 
 #ifdef ITK_USE_CONCEPT_CHECKING
   itkConceptMacro( FloatingPointPixel, ( itk::Concept::IsFloatingPoint< typename ImageType::PixelType > ) );
