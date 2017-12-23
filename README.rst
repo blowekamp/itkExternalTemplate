@@ -1,15 +1,20 @@
 ITKModuleTemplate
 =================
 
-
-.. image:: https://circleci.com/gh/InsightSoftwareConsortium/ITKModuleTemplate.svg?style=shield
+.. |CircleCI| image:: https://circleci.com/gh/InsightSoftwareConsortium/ITKModuleTemplate.svg?style=shield
     :target: https://circleci.com/gh/InsightSoftwareConsortium/ITKModuleTemplate
 
-.. image:: https://travis-ci.org/InsightSoftwareConsortium/ITKModuleTemplate.svg?branch=master
+.. |TravisCI| image:: https://travis-ci.org/InsightSoftwareConsortium/ITKModuleTemplate.svg?branch=master
     :target: https://travis-ci.org/InsightSoftwareConsortium/ITKModuleTemplate
 
-.. image:: https://img.shields.io/appveyor/ci/itkrobot/itkmoduletemplate.svg
+.. |AppVeyor| image:: https://img.shields.io/appveyor/ci/itkrobot/itkmoduletemplate.svg
     :target: https://ci.appveyor.com/project/itkrobot/itkmoduletemplate
+
+=========== =========== ===========
+   Linux      macOS       Windows
+=========== =========== ===========
+|CircleCI|  |TravisCI|  |AppVeyor|
+=========== =========== ===========
 
 This is a module for the `Insight Toolkit (ITK) <http://itk.org>`_ for
 segmentation and registration. It is designed to work with the ITKv4 modular
