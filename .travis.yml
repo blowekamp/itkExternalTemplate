@@ -8,7 +8,9 @@ cache:
   directories:
     - "$HOME/Library/Caches/Homebrew"
 script:
-- brew install cookiecutter
+- curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+- sudo python get-pip.py
+- sudo python -m pip install cookiecutter
 - cookiecutter --no-input .
 - cd ITKModuleTemplate
 - curl -L https://rawgit.com/InsightSoftwareConsortium/ITKPythonPackage/master/scripts/macpython-download-cache-and-build-module-wheels.sh -O
