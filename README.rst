@@ -17,7 +17,7 @@ ITKModuleTemplate
 =========== =========== ===========
 
 This is a module for the `Insight Toolkit (ITK) <http://itk.org>`_ for
-segmentation and registration. It is designed to work with the ITKv4 modular
+segmentation and registration. It is designed to work with the ITK modular
 system.
 
 This module is a template to be used as a starting point for a new ITK module.
