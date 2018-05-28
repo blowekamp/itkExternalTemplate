@@ -70,7 +70,7 @@ protected:
 
   typedef typename ImageType::RegionType OutputRegionType;
 
-  virtual void ThreadedGenerateData( const OutputRegionType & outputRegion, ThreadIdType threadId ) ITK_OVERRIDE;
+  virtual void DynamicThreadedGenerateData( const OutputRegionType & outputRegion ) ITK_OVERRIDE;
 
 private:
   ITK_DISALLOW_COPY_AND_ASSIGN(NormalDistributionImageSource);

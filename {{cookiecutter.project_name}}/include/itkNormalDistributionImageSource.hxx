@@ -46,7 +46,7 @@ NormalDistributionImageSource< TImage >
 template< typename TImage >
 void
 NormalDistributionImageSource< TImage >
-::ThreadedGenerateData( const OutputRegionType & outputRegion, ThreadIdType threadId )
+::DynamicThreadedGenerateData( const OutputRegionType & outputRegion )
 {
   ImageType * output = this->GetOutput();
 
@@ -63,7 +63,7 @@ NormalDistributionImageSource< TImage >
 
   typedef ImageScanlineIterator< ImageType > IteratorType;
   IteratorType it( output, outputRegion );
-  ProgressReporter progress( this, threadId, numberOfLinesToProcess );
+  ProgressReporter progress( this, 0, numberOfLinesToProcess );
 
   while( !it.IsAtEnd() )
     {
