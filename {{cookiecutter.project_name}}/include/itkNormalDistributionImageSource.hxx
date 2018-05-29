@@ -22,7 +22,6 @@
 #include "itkNormalVariateGenerator.h"
 
 #include "itkImageScanlineIterator.h"
-#include "itkProgressReporter.h"
 
 namespace itk
 {
@@ -63,7 +62,6 @@ NormalDistributionImageSource< TImage >
 
   typedef ImageScanlineIterator< ImageType > IteratorType;
   IteratorType it( output, outputRegion );
-  ProgressReporter progress( this, 0, numberOfLinesToProcess );
 
   while( !it.IsAtEnd() )
     {
@@ -73,7 +71,6 @@ NormalDistributionImageSource< TImage >
       ++it;
       }
     it.NextLine();
-    progress.CompletedPixel();
     }
 }
 
