@@ -4,6 +4,7 @@
   "github_username": "itkrobot",
   "project_name": "ITKModuleTemplate",
   "module_name": "{{ cookiecutter.project_name[3:] }}",
+  "filter_name": "MyFilter",
   "python_package_name": "itk-{{ cookiecutter.project_name[3:].lower() }}",
   "download_url": "https://github.com/InsightSoftwareConsortium/{{ cookiecutter.project_name }}",
   "project_short_description": "This is a template that serves as a starting point for a new module.",
