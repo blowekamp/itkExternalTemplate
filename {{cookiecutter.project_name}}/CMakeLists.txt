@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.10.2)
 project({{ cookiecutter.module_name }})
 
 set({{ cookiecutter.module_name }}_LIBRARIES {{ cookiecutter.module_name }})
