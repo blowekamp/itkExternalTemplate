@@ -32,10 +32,58 @@ The following will get an external module started in a new repository::
   python -m cookiecutter gh:InsightSoftwareConsortium/ITKModuleTemplate
   # Fill in the information requested at the prompts
 
+Reasonable defaults will be provided for all of the parameters. The parameters are:
+
+*full_name*
+  Your full name.
+
+*email*
+  Your email.
+
+*github_username*
+  Your GitHub username.
+
+*project_name*
+  This is a name for the project, which is *ITK* followed by the
+  module name, by convention. Examples include *ITKIsotropicWavelets* or
+  *ITKBoneMorphometry*.
+
+*module_name*
+  This is the name of the module. Since this is an external module, it does
+  not start with the *ITK* prefix. It is in CamelCase, by convention. Examples
+  include *IsotropicWavelets* and *BoneMorphometry*.
+
+*filter_name*
+  The skeleton of an ``itk::ImageToImageFilter`` will be created by default.
+  Optionally specify this value, if you will be adding an
+  ``itk::ImageToImageFilter`` to your module.
+
+*python_package_name*
+  This is the name of the Python package that will be created from the module.
+  By convention, this is *itk-<project_name in lower case>*. For example,
+  *itk-isotropicwavelets* or *itk-bonemorphometry*.
+
+*download_url*
+  This is the download url added to the Python package metadata. This can be
+  the GitHub repository URL.
+
+*project_short_description*
+  A short description to use in the project README, module Doxygen
+  documentation, and Python package documentation.
+
+*project_long_description*
+  A long description to use in the project README, module Doxygen
+  documentation, and Python package documentation.
+
+The output of the cookiecutter is a buildable ITK external module with example
+classes. Remove or replace the classes with your new classes. Push your new
+module to GitHub, and enable builds on `CircleCI <https://circleci.com/>`_,
+`TravisCI <https://travis-ci.org/>`_, and `AppVeyor
+<https://www.appveyor.com/>`.
+
 Documentation on `how to populate the module
 <https://itk.org/ITKSoftwareGuide/html/Book1/ITKSoftwareGuide-Book1ch9.html#x50-1430009>`_
-can be found in the `ITK Software Guide
-<https://itk.org/ITKSoftwareGuide/html/>`_.
+can be found in the `ITK Software Guide <https://itk.org/ITKSoftwareGuide/html/>`_.
 
 
 
