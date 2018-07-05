@@ -79,7 +79,7 @@ The output of the cookiecutter is a buildable ITK external module with example
 classes. Remove or replace the classes with your new classes. Push your new
 module to GitHub, and enable builds on `CircleCI <https://circleci.com/>`_,
 `TravisCI <https://travis-ci.org/>`_, and `AppVeyor
-<https://www.appveyor.com/>`.
+<https://www.appveyor.com/>`_.
 
 Documentation on `how to populate the module
 <https://itk.org/ITKSoftwareGuide/html/Book1/ITKSoftwareGuide-Book1ch9.html#x50-1430009>`_
