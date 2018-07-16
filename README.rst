@@ -114,6 +114,15 @@ and `uploaded to the Python Package Index (PyPI)
 <https://itkpythonpackage.readthedocs.io/en/latest/Build_ITK_Module_Python_packages.html#upload-the-packages-to-pypi>`_.
 
 
+ITKv4 Branch
+------------
+In the transition to the major release of ITKv5 your module might want to be compatible with both versions: ITKv4 and ITKv5.
+In order to do that, keep the master branch for development with ITKv5, and create another branch, named ``ITKv4``, or ``release``,
+that is compatible with the version 4.13 of ITK.
+For examples and updated information on how to do this: please `check the discourse conversation
+<https://discourse.itk.org/t/itk-external-module-github-builds-for-4-x-and-5-x/900>`_.
+
+
 License
 -------
 
