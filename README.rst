@@ -85,6 +85,10 @@ Documentation on `how to populate the module
 <https://itk.org/ITKSoftwareGuide/html/Book1/ITKSoftwareGuide-Book1ch9.html#x50-1430009>`_
 can be found in the `ITK Software Guide <https://itk.org/ITKSoftwareGuide/html/>`_.
 
+To improve the discoverability of your module on GitHub, first push the
+associated repository, then add `itk-module
+<https://github.com/topics/itk-module>`_ to the project's `GitHub Topics
+<https://help.github.com/articles/about-topics/>`_ .
 
 
 Remote Module
