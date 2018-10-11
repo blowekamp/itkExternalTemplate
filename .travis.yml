@@ -13,7 +13,7 @@ script:
 - sudo python -m pip install cookiecutter
 - cookiecutter --no-input .
 - cd ITKModuleTemplate
-- curl -L https://rawgit.com/InsightSoftwareConsortium/ITKPythonPackage/master/scripts/macpython-download-cache-and-build-module-wheels.sh -O
+- curl -L https://raw.githubusercontent.com/InsightSoftwareConsortium/ITKPythonPackage/master/scripts/macpython-download-cache-and-build-module-wheels.sh -O
 - chmod u+x macpython-download-cache-and-build-module-wheels.sh
 - ./macpython-download-cache-and-build-module-wheels.sh
 - tar -zcvf dist.tar.gz dist/
