@@ -96,7 +96,7 @@ Remote Module
 
 After an `Insight Journal <http://www.insight-journal.org/>`_ article has been
 submitted, the module can be included in ITK as a `remote module
-<http://www.itk.org/Wiki/ITK/Policy_and_Procedures_for_Adding_Remote_Modules>`_.
+<https://itk.org/ITKSoftwareGuide/html/Book1/ITKSoftwareGuide-Book1ch9.html#x55-1640009.7>`_.
 Add a file in "ITK/Modules/Remote" called "YourModule.remote.cmake", for this
 module it would be "ExternalExample.remote.cmake" with the followlowing
 contents::
