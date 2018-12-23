@@ -55,6 +55,7 @@ int itk{{cookiecutter.filter_name}}Test( int argc, char * argv[] )
 {
   if( argc < 2 )
     {
+    std::cerr << "Missing parameters." << std::endl;
     std::cerr << "Usage: " << argv[0];
     std::cerr << " outputImage";
     std::cerr << std::endl;
@@ -92,5 +93,6 @@ int itk{{cookiecutter.filter_name}}Test( int argc, char * argv[] )
   TRY_EXPECT_NO_EXCEPTION( writer->Update() );
 
 
+  std::cout << "Test finished." << std::endl;
   return EXIT_SUCCESS;
 }
