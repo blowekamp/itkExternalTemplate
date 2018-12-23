@@ -39,7 +39,7 @@ int itkNormalDistributionImageSourceTest( int argc, char * argv[] )
   typedef itk::NormalDistributionImageSource< ImageType > DistributionSourceType;
   DistributionSourceType::Pointer distributionSource = DistributionSourceType::New();
 
-  EXERCISE_BASIC_OBJECT_METHODS( distributionSource, NormalDistributionImageSource , GenerateImageSource );
+  EXERCISE_BASIC_OBJECT_METHODS( distributionSource, NormalDistributionImageSource, GenerateImageSource );
 
 
   ImageType::SizeType size;
