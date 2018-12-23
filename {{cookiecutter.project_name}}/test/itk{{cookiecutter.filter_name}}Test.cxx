@@ -88,15 +88,9 @@ int itk{{cookiecutter.filter_name}}Test( int argc, char * argv[] )
   writer->SetFileName( outputImageFileName );
   writer->SetInput( filter->GetOutput() );
   writer->SetUseCompression(true);
-  try
-    {
-    writer->Update();
-    }
-  catch( itk::ExceptionObject & error )
-    {
-    std::cerr << "Error: " << error << std::endl;
-    return EXIT_FAILURE;
-    }
+
+  TRY_EXPECT_NO_EXCEPTION( writer->Update() );
+
 
   return EXIT_SUCCESS;
 }
