@@ -52,15 +52,9 @@ int itkNormalDistributionImageSourceTest( int argc, char * argv[] )
   WriterType::Pointer writer = WriterType::New();
   writer->SetFileName( outputImageFileName );
   writer->SetInput( distributionSource->GetOutput() );
-  try
-    {
-    writer->Update();
-    }
-  catch( itk::ExceptionObject & error )
-    {
-    std::cerr << "Error: " << error << std::endl;
-    return EXIT_FAILURE;
-    }
+
+  TRY_EXPECT_NO_EXCEPTION( writer->Update() );
+
 
   return EXIT_SUCCESS;
 }
