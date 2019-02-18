@@ -45,9 +45,11 @@ NormalDistributionImageSource< TImage >
 template< typename TImage >
 void
 NormalDistributionImageSource< TImage >
-::DynamicThreadedGenerateData( const OutputRegionType & outputRegion )
+::GenerateData()
 {
+  this->AllocateOutputs();
   ImageType * output = this->GetOutput();
+  const OutputRegionType & outputRegion = output->GetRequestedRegion();
 
   typedef itk::Statistics::NormalVariateGenerator NormalGeneratorType;
   NormalGeneratorType::Pointer normalGenerator = NormalGeneratorType::New();
