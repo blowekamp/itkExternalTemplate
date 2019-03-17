@@ -67,7 +67,7 @@ protected:
 
   typedef typename OutputImageType::RegionType OutputRegionType;
 
-  virtual void DynamicThreadedGenerateData( const OutputRegionType & outputRegion) override;
+  void DynamicThreadedGenerateData( const OutputRegionType & outputRegion) override;
 
 private:
 
