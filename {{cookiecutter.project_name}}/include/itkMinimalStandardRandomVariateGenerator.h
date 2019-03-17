@@ -74,13 +74,13 @@ public:
   void Initialize(int randomSeed);
 
   /** Get a variate in the range [0, 1] */
-  virtual double GetVariate() ITK_OVERRIDE;
+  double GetVariate() override;
 
 protected:
   MinimalStandardRandomVariateGenerator();
   virtual ~MinimalStandardRandomVariateGenerator() {}
 
-  virtual void PrintSelf(std::ostream & os, Indent indent) const ITK_OVERRIDE;
+  void PrintSelf(std::ostream & os, Indent indent) const override;
 
 private:
   ITK_DISALLOW_COPY_AND_ASSIGN(MinimalStandardRandomVariateGenerator);
