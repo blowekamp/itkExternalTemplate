@@ -54,6 +54,8 @@ class {{ cookiecutter.module_name }}_EXPORT MinimalStandardRandomVariateGenerato
   public RandomVariateGeneratorBase
 {
 public:
+  ITK_DISALLOW_COPY_AND_ASSIGN(MinimalStandardRandomVariateGenerator);
+
   /** Standard class typedefs. */
   typedef MinimalStandardRandomVariateGenerator    Self;
   typedef RandomVariateGeneratorBase               Superclass;
@@ -83,7 +85,6 @@ protected:
   virtual void PrintSelf(std::ostream & os, Indent indent) const ITK_OVERRIDE;
 
 private:
-  ITK_DISALLOW_COPY_AND_ASSIGN(MinimalStandardRandomVariateGenerator);
 
   NormalGeneratorType::Pointer m_NormalGenerator;
 };
