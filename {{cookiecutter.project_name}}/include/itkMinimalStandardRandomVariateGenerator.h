@@ -80,7 +80,7 @@ public:
 
 protected:
   MinimalStandardRandomVariateGenerator();
-  virtual ~MinimalStandardRandomVariateGenerator() {}
+  ~MinimalStandardRandomVariateGenerator() override = default;
 
   void PrintSelf(std::ostream & os, Indent indent) const override;
 

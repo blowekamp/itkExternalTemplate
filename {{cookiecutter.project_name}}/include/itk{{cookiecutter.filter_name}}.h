@@ -61,7 +61,7 @@ public:
 
 protected:
   {{ cookiecutter.filter_name }}();
-  virtual ~{{ cookiecutter.filter_name }}() override {}
+  ~{{ cookiecutter.filter_name }}() override = default;
 
   void PrintSelf( std::ostream& os, Indent indent ) const override;
 
