@@ -2,7 +2,7 @@ ITKModuleTemplate
 =================
 
 .. image:: https://dev.azure.com/InsightSoftwareConsortium/ITKModules/_apis/build/status/InsightSoftwareConsortium.ITKModuleTemplate?branchName=master
-    :target: https://dev.azure.com/InsightSoftwareConsortium/ITKModules/_build/latest?definitionId=8&branchName=master
+    :target: https://dev.azure.com/InsightSoftwareConsortium/ITKModules/_build/latest?definitionId=19&branchName=master
     :alt:    Build Status
 
 Overview
