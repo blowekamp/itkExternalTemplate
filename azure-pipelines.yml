@@ -53,6 +53,7 @@ jobs:
       python -m pip install --upgrade pip
       python -m pip install --upgrade setuptools
       python -m pip install scikit-ci-addons
+      python -m pip install cookiecutter
       python -m pip install ninja
     displayName: 'Install build dependencies'
 
@@ -74,10 +75,9 @@ jobs:
       curl -L https://raw.githubusercontent.com/InsightSoftwareConsortium/ITK/dashboard/itk_common.cmake -O
     displayName: 'Fetch CTest driver script'
 
-  - script: |
-      python -m pip install cookiecutter
-      cd /
-      python -m cookiecutter --no-input --output-dir $(Agent.BuildDirectory)/ITKModuleTemplate $(Agent.SourcesDirectory)
+  - bash: |
+      python -m cookiecutter --no-input --output-dir "$(Agent.BuildDirectory)" "$(Build.SourcesDirectory)"
+      mkdir "$(Agent.BuildDirectory)/ITKModuleTemplate/.git"
     displayName: 'Evaluate template'
 
   - bash: |
@@ -136,7 +136,7 @@ jobs:
       sudo pip3 install --upgrade pip
       sudo pip3 install --upgrade setuptools
       sudo pip3 install scikit-ci-addons
-      ci_addons ctest_junit_formatter $(Agent.BuildDirectory)/build > $(Agent.BuildDirectory)/JUnitTestResults.xml
+      ci_addons ctest_junit_formatter "$(Agent.BuildDirectory)/build" > "$(Agent.BuildDirectory)/JUnitTestResults.xml"
     condition: succeededOrFailed()
     displayName: 'Format CTest output in JUnit format'
 
@@ -161,15 +161,26 @@ jobs:
       chmod u+x dockcross-manylinux-download-cache-and-build-module-wheels.sh
     displayName: 'Fetch build script'
 
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.7'
+      architecture: 'x64'
+
   - script: |
+      python -m pip install cookiecutter
+      python -m cookiecutter --no-input --output-dir $(Agent.BuildDirectory) $(Build.SourcesDirectory)
+    displayName: 'Evaluate template'
+
+  - script: |
+      cd $(Agent.BuildDirectory)/ITKModuleTemplate
       export ITK_PACKAGE_VERSION=$(ITKGitTag)
-      ./dockcross-manylinux-download-cache-and-build-module-wheels.sh
+      $(Build.SourcesDirectory)/dockcross-manylinux-download-cache-and-build-module-wheels.sh
     displayName: 'Build Python packages'
 
   - task: PublishPipelineArtifact@0
     inputs:
       artifactName: 'LinuxWheels'
-      targetPath: './dist'
+      targetPath: '$(Agent.BuildDirectory)/ITKModuleTemplate/dist'
 
 
 - job: 'PackageMacOS'
@@ -186,14 +197,20 @@ jobs:
     displayName: 'Fetch build script'
 
   - script: |
+      python -m pip install cookiecutter
+      python -m cookiecutter --no-input --output-dir $(Agent.BuildDirectory) $(Build.SourcesDirectory)
+    displayName: 'Evaluate template'
+
+  - script: |
+      cd $(Agent.BuildDirectory)/ITKModuleTemplate
       export ITK_PACKAGE_VERSION=$(ITKGitTag)
-      ./macpython-download-cache-and-build-module-wheels.sh
+      $(Build.SourcesDirectory)/macpython-download-cache-and-build-module-wheels.sh
     displayName: 'Build Python packages'
 
   - task: PublishPipelineArtifact@0
     inputs:
       artifactName: 'MacOSWheels'
-      targetPath: './dist'
+      targetPath: '$(Agent.BuildDirectory)/ITKModuleTemplate/dist'
 
 
 - job: 'PackageWindows'
@@ -209,14 +226,20 @@ jobs:
     displayName: 'Fetch build script'
 
   - script: |
+      python -m pip install cookiecutter
+      python -m cookiecutter --no-input --output-dir $(Agent.BuildDirectory) $(Build.SourcesDirectory)
+    displayName: 'Evaluate template'
+
+  - script: |
       call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+      cd $(Agent.BuildDirectory)\ITKModuleTemplate
       set ITK_PACKAGE_VERSION=$(ITKGitTag)
       set CC=cl.exe
       set CXX=cl.exe
-      powershell.exe -file .\windows-download-cache-and-build-module-wheels.ps1
+      powershell.exe -file $(Build.SourcesDirectory)\windows-download-cache-and-build-module-wheels.ps1
     displayName: 'Build Python packages'
 
   - task: PublishPipelineArtifact@0
     inputs:
       artifactName: 'WindowsWheels'
-      targetPath: './dist'
+      targetPath: '$(Agent.BuildDirectory)/ITKModuleTemplate/dist'
