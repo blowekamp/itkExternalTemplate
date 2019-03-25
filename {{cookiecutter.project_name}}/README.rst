@@ -1,20 +1,12 @@
 {{ cookiecutter.project_name }}
 =================================
 
-.. |CircleCI| image:: https://circleci.com/gh/InsightSoftwareConsortium/{{ cookiecutter.project_name }}.svg?style=shield
-    :target: https://circleci.com/gh/InsightSoftwareConsortium/{{ cookiecutter.project_name }}
+.. image:: https://dev.azure.com/InsightSoftwareConsortium/ITKModules/_apis/build/status/{{ cookiecutter.project_name.lower() }}?branchName=master
+    :target: https://dev.azure.com/InsightSoftwareConsortium/ITKModules/_build/latest?definitionId=8&branchName=master
+    :alt:    Build Status
 
-.. |TravisCI| image:: https://travis-ci.org/InsightSoftwareConsortium/{{ cookiecutter.project_name }}.svg?branch=master
-    :target: https://travis-ci.org/InsightSoftwareConsortium/{{ cookiecutter.project_name }}
-
-.. |AppVeyor| image:: https://img.shields.io/appveyor/ci/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name.lower() }}.svg
-    :target: https://ci.appveyor.com/project/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name.lower() }}
-
-=========== =========== ===========
-   Linux      macOS       Windows
-=========== =========== ===========
-|CircleCI|  |TravisCI|  |AppVeyor|
-=========== =========== ===========
+Overview
+--------
 
 {{ cookiecutter.project_short_description }}
 
