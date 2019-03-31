@@ -1,7 +1,6 @@
 {
   "full_name": "Insight Software Consortium",
   "email": "itk+community@discourse.itk.org",
-  "github_username": "itkrobot",
   "project_name": "ITKModuleTemplate",
   "module_name": "{{ cookiecutter.project_name[3:] }}",
   "filter_name": "MyFilter",

@@ -32,9 +32,6 @@ Reasonable defaults will be provided for all of the parameters. The parameters a
 *email*
   Your email.
 
-*github_username*
-  Your GitHub username.
-
 *project_name*
   This is a name for the project, which is *ITK* followed by the
   module name, by convention. Examples include *ITKIsotropicWavelets* or
