@@ -56,7 +56,7 @@ int itk{{cookiecutter.filter_name}}Test( int argc, char * argv[] )
   if( argc < 2 )
     {
     std::cerr << "Missing parameters." << std::endl;
-    std::cerr << "Usage: " << argv[0];
+    std::cerr << "Usage: " << itkNameOfTestExecutableMacro(argv);
     std::cerr << " outputImage";
     std::cerr << std::endl;
     return EXIT_FAILURE;
