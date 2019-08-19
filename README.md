@@ -25,43 +25,45 @@ The following will get an external module started in a new repository:
 Reasonable defaults will be provided for all of the parameters. The
 parameters are:
 
-*full\_name*  
-Your full name.
+<dl>
+<dt>full_name</dt>
+<dd>Your full name.</dd>
 
-*email*  
-Your email.
+<dt>email</dt>
+<dd>Your email.</dd>
 
-*project\_name*  
-This is a name for the project, which is *ITK* followed by the module
-name, by convention. Examples include *ITKIsotropicWavelets* or
-*ITKBoneMorphometry*.
+<dt>project_name</dt>
+<dd>This is a name for the project, which is <i>ITK</i> followed by the module
+name, by convention. Examples include <i>ITKIsotropicWavelets</i> or
+<i>ITKBoneMorphometry</i>.<dd>
 
-*module\_name*  
-This is the name of the module. Since this is an external module, it
-does not start with the *ITK* prefix. It is in CamelCase, by convention.
-Examples include *IsotropicWavelets* and *BoneMorphometry*.
+<dt>module_name</dt>
+<dd>This is the name of the module. Since this is an external module, it
+does not start with the <i>ITK</i> prefix. It is in CamelCase, by convention.
+Examples include <i>IsotropicWavelets</i> and <i>BoneMorphometry</i>.<dd>
 
-*filter\_name*  
-The skeleton of an `itk::ImageToImageFilter` will be created by default.
+<dt>filter_name</dt>
+<dd>The skeleton of an <code>itk::ImageToImageFilter</code> will be created by default.
 Optionally specify this value, if you will be adding an
-`itk::ImageToImageFilter` to your module.
+<code>itk::ImageToImageFilter</code> to your module.</dt>
 
-*python\_package\_name*  
-This is the name of the Python package that will be created from the
-module. By convention, this is *itk-\<project\_name in lower case\>*.
-For example, *itk-isotropicwavelets* or *itk-bonemorphometry*.
+<dt>python_package_name</dt>
+<dd>This is the name of the Python package that will be created from the
+module. By convention, this is <i>itk-<project_name in lower case></i>
+For example, <i>itk-isotropicwavelets</i> or <i>itk-bonemorphometry</i>.</dd>
 
-*download\_url*  
-This is the download url added to the Python package metadata. This can
-be the GitHub repository URL.
+<dt>download_url</dt>
+<dd>This is the download url added to the Python package metadata. This can
+be the GitHub repository URL.</dd>
 
-*project\_short\_description*  
-A short description to use in the project README, module Doxygen
-documentation, and Python package documentation.
+<dt>project_short_description</dt>
+<dd>A short description to use in the project README, module Doxygen
+documentation, and Python package documentation.</dd>
 
-*project\_long\_description*  
-A long description to use in the project README, module Doxygen
-documentation, and Python package documentation.
+<dt>project_long_description</dt>
+<dd>A long description to use in the project README, module Doxygen
+documentation, and Python package documentation.</dd>
+</dl>
 
 The output of the cookiecutter is a buildable ITK external module with
 example classes. Remove or replace the classes with your new classes.
