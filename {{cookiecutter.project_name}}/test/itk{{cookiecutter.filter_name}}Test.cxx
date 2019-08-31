@@ -61,9 +61,9 @@ int itk{{cookiecutter.filter_name}}Test( int argc, char * argv[] )
     std::cerr << std::endl;
     return EXIT_FAILURE;
     }
-  const char * outputImageFileName  = argv[1];
+  const char * outputImageFileName = argv[1];
 
-  const unsigned int Dimension = 2;
+  constexpr unsigned int Dimension = 2;
   using PixelType = float;
   using ImageType = itk::Image< PixelType, Dimension >;
 
@@ -84,7 +84,7 @@ int itk{{cookiecutter.filter_name}}Test( int argc, char * argv[] )
   filter->AddObserver( itk::ProgressEvent(), showProgress );
   filter->SetInput(image);
 
-  typedef itk::ImageFileWriter< ImageType > WriterType;
+  using WriterType = itk::ImageFileWriter< ImageType >;
   WriterType::Pointer writer = WriterType::New();
   writer->SetFileName( outputImageFileName );
   writer->SetInput( filter->GetOutput() );
