@@ -26,38 +26,37 @@
 namespace itk
 {
 
-template< typename TInputImage, typename TOutputImage >
-{{ cookiecutter.filter_name }}< TInputImage, TOutputImage >
+template <typename TInputImage, typename TOutputImage>
+{{ cookiecutter.filter_name }}<TInputImage, TOutputImage>
 ::{{ cookiecutter.filter_name }}()
+{}
+
+
+template <typename TInputImage, typename TOutputImage>
+void
+{{ cookiecutter.filter_name }}<TInputImage, TOutputImage>
+::PrintSelf(std::ostream & os, Indent indent) const
 {
+  Superclass::PrintSelf(os, indent);
 }
 
 
-template< typename TInputImage, typename TOutputImage >
+template <typename TInputImage, typename TOutputImage>
 void
-{{ cookiecutter.filter_name }}< TInputImage, TOutputImage >
-::PrintSelf( std::ostream& os, Indent indent ) const
+{{ cookiecutter.filter_name }}<TInputImage, TOutputImage>
+::DynamicThreadedGenerateData(const OutputRegionType & outputRegion)
 {
-  Superclass::PrintSelf( os, indent );
-}
-
-
-template< typename TInputImage, typename TOutputImage >
-void
-{{ cookiecutter.filter_name }}< TInputImage, TOutputImage >
-::DynamicThreadedGenerateData( const OutputRegionType & outputRegion)
-{
-  OutputImageType * output = this->GetOutput();
+  OutputImageType *      output = this->GetOutput();
   const InputImageType * input = this->GetInput();
   using InputRegionType = typename InputImageType::RegionType;
   InputRegionType inputRegion = InputRegionType(outputRegion.GetSize());
 
   itk::ImageRegionConstIterator<InputImageType> in(input, inputRegion);
-  itk::ImageRegionIterator<OutputImageType> out(output, outputRegion);
+  itk::ImageRegionIterator<OutputImageType>     out(output, outputRegion);
 
   for (in.GoToBegin(), out.GoToBegin(); !in.IsAtEnd() && !out.IsAtEnd(); ++in, ++out)
   {
-    out.Set( in.Get() );
+    out.Set(in.Get());
   }
 }
 

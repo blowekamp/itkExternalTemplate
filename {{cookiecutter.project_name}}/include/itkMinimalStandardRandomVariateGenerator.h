@@ -50,8 +50,7 @@ namespace Statistics
  *
  * \ingroup {{ cookiecutter.module_name }}
  */
-class {{ cookiecutter.module_name }}_EXPORT MinimalStandardRandomVariateGenerator:
-  public RandomVariateGeneratorBase
+class {{ cookiecutter.module_name }}_EXPORT MinimalStandardRandomVariateGenerator : public RandomVariateGeneratorBase
 {
 public:
   ITK_DISALLOW_COPY_AND_ASSIGN(MinimalStandardRandomVariateGenerator);
@@ -59,18 +58,18 @@ public:
   /** Standard class typedefs. */
   using Self = MinimalStandardRandomVariateGenerator;
   using Superclass = RandomVariateGeneratorBase;
-  using Pointer = SmartPointer< Self >;
-  using ConstPointer = SmartPointer< const Self >;
+  using Pointer = SmartPointer<Self>;
+  using ConstPointer = SmartPointer<const Self>;
 
   using IntegerType = uint32_t;
 
   using NormalGeneratorType = itk::Statistics::NormalVariateGenerator;
 
   /** Run-time type information (and related methods). */
-  itkTypeMacro( MinimalStandardRandomVariateGenerator, RandomVariateGeneratorBase);
+  itkTypeMacro(MinimalStandardRandomVariateGenerator, RandomVariateGeneratorBase);
 
   /** Method for creation through the object factory.  */
-  itkNewMacro( Self );
+  itkNewMacro(Self);
 
   /** initialize with a simple IntegerType */
   void Initialize(int randomSeed);
@@ -85,7 +84,6 @@ protected:
   void PrintSelf(std::ostream & os, Indent indent) const override;
 
 private:
-
   NormalGeneratorType::Pointer m_NormalGenerator;
 };
 

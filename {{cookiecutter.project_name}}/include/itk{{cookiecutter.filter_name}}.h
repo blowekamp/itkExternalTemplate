@@ -33,8 +33,8 @@ namespace itk
  * \ingroup {{ cookiecutter.module_name }}
  *
  */
-template< typename TInputImage, typename TOutputImage >
-class {{ cookiecutter.filter_name }}: public ImageToImageFilter< TInputImage, TOutputImage >
+template <typename TInputImage, typename TOutputImage>
+class {{ cookiecutter.filter_name }} : public ImageToImageFilter<TInputImage, TOutputImage>
 {
 public:
   ITK_DISALLOW_COPY_AND_ASSIGN({{ cookiecutter.filter_name }});
@@ -48,39 +48,37 @@ public:
   using OutputPixelType = typename OutputImageType::PixelType;
 
   /** Standard class typedefs. */
-  using Self = {{ cookiecutter.filter_name }}< InputImageType, OutputImageType >;
-  using Superclass = ImageToImageFilter< InputImageType, OutputImageType >;
-  using Pointer = SmartPointer< Self >;
-  using ConstPointer = SmartPointer< const Self >;
+  using Self = {{ cookiecutter.filter_name }}<InputImageType, OutputImageType>;
+  using Superclass = ImageToImageFilter<InputImageType, OutputImageType>;
+  using Pointer = SmartPointer<Self>;
+  using ConstPointer = SmartPointer<const Self>;
 
   /** Run-time type information. */
-  itkTypeMacro( {{ cookiecutter.filter_name }}, ImageToImageFilter );
+  itkTypeMacro({{ cookiecutter.filter_name }}, ImageToImageFilter);
 
   /** Standard New macro. */
-  itkNewMacro( Self );
+  itkNewMacro(Self);
 
 protected:
   {{ cookiecutter.filter_name }}();
   ~{{ cookiecutter.filter_name }}() override = default;
 
-  void PrintSelf( std::ostream& os, Indent indent ) const override;
+  void PrintSelf(std::ostream & os, Indent indent) const override;
 
   using OutputRegionType = typename OutputImageType::RegionType;
 
-  void DynamicThreadedGenerateData( const OutputRegionType & outputRegion) override;
+  void DynamicThreadedGenerateData(const OutputRegionType & outputRegion) override;
 
 private:
-
-
 #ifdef ITK_USE_CONCEPT_CHECKING
   // Add concept checking such as
   // itkConceptMacro( FloatingPointPixel, ( itk::Concept::IsFloatingPoint< typename InputImageType::PixelType > ) );
 #endif
 };
-}
+} // namespace itk
 
 #ifndef ITK_MANUAL_INSTANTIATION
-#include "itk{{ cookiecutter.filter_name }}.hxx"
+#  include "itk{{ cookiecutter.filter_name }}.hxx"
 #endif
 
 #endif // itk{{ cookiecutter.filter_name }}
