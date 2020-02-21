@@ -1,6 +1,7 @@
+# The file template originates from: https://github.com/InsightSoftwareConsortium/ITKModuleTemplate
 variables:
-  ITKGitTag: v5.0.1
-  ITKPythonGitTag: v5.0.1
+  ITKGitTag: v5.1rc02
+  ITKPythonGitTag: v5.1rc02
   CMakeBuildType: Release
 
 trigger:
